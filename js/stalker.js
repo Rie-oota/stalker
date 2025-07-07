@@ -1,17 +1,15 @@
 $(function () {
   // id[js-stalker]を取得する
   const stalker = $("#js-stalker");
+  // 不透明にする
+  $(".stalker").css("opacity","1");
   // マウスを移動させたときの処理を指定する
-  $(document).on("mousemove", function (e) {
+  $(document).on("mousemove", function (update) {
     // マウスの座標を取得
-    const x = e.clientX;
-    const y = e.clientY;
+    const x = update.clientX;
+    const y = update.clientY;
     // ストーカーの位置を更新する
-    stalker.css({
-      // 不透明にする
-      opacity: 1,
-      // マウスの座標に移動する
-      transform: "translate(" + x + "px, " + y + "px)",
-    });
+    $(".stalker").css("transform","translate(" + x + "px, " + y + "px)");
   });
-}); 
+  requestAnimationFrame(update);
+});
